@@ -4,7 +4,7 @@
 
 
 
-## [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+## [`2. Add Two Numbers`](https://leetcode.com/problems/add-two-numbers/)
 
 1. Медленная работа `55:07` вместо `30:00`
 
