@@ -85,3 +85,14 @@ func isPalindrome(head *ListNode) bool {
     return true
 }
 ```
+
+
+
+## [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+- Ошибка при не внимательности к операторам условий `&&`, `||`
+
+```golang
+for point1 != nil && point2 != nil {}
+// Заменен на ->
+for point1 != nil || point2 != nil {}
+```

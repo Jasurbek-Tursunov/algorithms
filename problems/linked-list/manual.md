@@ -147,3 +147,49 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
     return dummy.Next
 }
 ```
+
+
+
+## [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+```golang
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+func firstMin(point1, point2 *ListNode) bool {
+    if point1 == nil {
+        return false
+    } else if point2 == nil {
+        return true
+    } else {
+        return point1.Val < point2.Val 
+    }
+}
+
+
+func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+    dummy := &ListNode{Val: 0}
+    point := dummy
+
+    point1 := list1
+    point2 := list2
+
+    for point1 != nil || point2 != nil {
+        if firstMin(point1, point2) {
+            point.Next = point1
+            point1 = point1.Next
+        } else {
+            point.Next = point2
+            point2 = point2.Next
+        }
+        point = point.Next
+    }
+
+    return dummy.Next
+}
+```
