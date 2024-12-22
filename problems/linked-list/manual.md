@@ -152,6 +152,8 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 
 ## [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 
+- Time: ***O(n)***
+- Memory: ***O(1)***
 ```golang
 /**
  * Definition for singly-linked list.
@@ -188,6 +190,58 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
             point2 = point2.Next
         }
         point = point.Next
+    }
+
+    return dummy.Next
+}
+```
+
+
+
+## [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+
+- Time: ***O(n)***
+- Memory: ***O(1)***
+
+```golang
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+func getMinIndex(lists []*ListNode) (int, bool) {
+    minIndex := 0
+    flag := false
+
+    length := len(lists)
+
+    for i := 0; i < length; i++ {
+        if lists[i] != nil {
+            flag = true
+            if lists[minIndex] == nil || lists[minIndex].Val > lists[i].Val {
+                minIndex = i
+            }
+        }
+    }
+
+    return minIndex, flag
+}
+
+func mergeKLists(lists []*ListNode) *ListNode {
+    dummy := &ListNode{Val: 0}
+
+    point := dummy
+
+    minIndex, notEmpty := getMinIndex(lists)
+
+    for notEmpty {
+        point.Next = lists[minIndex]
+        lists[minIndex] = lists[minIndex].Next
+        point = point.Next
+        minIndex, notEmpty = getMinIndex(lists)
     }
 
     return dummy.Next

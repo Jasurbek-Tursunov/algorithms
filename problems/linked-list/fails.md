@@ -89,10 +89,30 @@ func isPalindrome(head *ListNode) bool {
 
 
 ## [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
-- Ошибка при не внимательности к операторам условий `&&`, `||`
+
+1. Ошибка при не внимательности к операторам условий `&&`, `||`
 
 ```golang
 for point1 != nil && point2 != nil {}
 // Заменен на ->
 for point1 != nil || point2 != nil {}
+```
+
+
+
+## [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+
+1. Ошибка при не внимательности синтаксиса
+2. Ошибка сравнения! (сравнение указателей вместо значений) `lists[minIndex] > lists[i]` вместо `lists[minIndex].Val > lists[i].Val`
+3. Ошибка условия изменения
+```golang
+if lists[minIndex].Val > lists[i].Val {
+    minIndex = i
+}
+// Заменен на ->
+if lists[minIndex] == nil || lists[minIndex].Val > lists[i].Val {
+    minIndex = i
+}
+
+// Так как lists[minIndex] может указать на nil если первый *ListNode пустой (nil)
 ```
