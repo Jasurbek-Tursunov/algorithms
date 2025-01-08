@@ -136,3 +136,8 @@ func reorderList(head *ListNode) {
 *Input `[1,2,3,4,5]`*<br>
 *Output `[1,5,4,3]`*<br>
 *Expected `[1,5,2,4,3]`*
+
+
+## [1019. Следующий Больший узел В Связанном списке](https://leetcode.com/problems/next-greater-node-in-linked-list/)
+
+- Timeout
