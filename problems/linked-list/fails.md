@@ -31,7 +31,7 @@ for point2 != nil {
 }
 ```
 
-<span style="color: green">**Ошибка**</span>
+<span style="color: green">**Верно**</span>
 ```golang
 /**
  * Definition for singly-linked list.
@@ -115,4 +115,27 @@ if lists[minIndex] == nil || lists[minIndex].Val > lists[i].Val {
 }
 
 // Так как lists[minIndex] может указать на nil если первый *ListNode пустой (nil)
+```
+
+## [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+
+1. Обдумать все крайние случаи в тестах
+2. Нельзя добавлять или изменять значение в nil хеш-таблице, используйте пустую хеш-таблицу
+
+<span style="color: red">**Ошибка**</span>
+```golang
+var table map[*ListNode]bool
+table[p1] = true
+```
+
+<span style="color: green">**Верно**</span>
+```golang
+table := map[*ListNode]bool{}
+table[p1] = true
+```
+
+<span style="color: green">**Верно**</span>
+```golang
+table := make(map[*ListNode]bool)
+table[p1] = true
 ```

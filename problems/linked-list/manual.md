@@ -247,3 +247,40 @@ func mergeKLists(lists []*ListNode) *ListNode {
     return dummy.Next
 }
 ```
+
+
+
+## [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+
+- Time: ***O(n)***
+- Memory: ***O(n)***
+
+```golang
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+func getIntersectionNode(headA, headB *ListNode) *ListNode {
+    table := map[*ListNode]bool{}
+    p1 := headA
+    p2 := headB
+
+    for p1 != nil {
+        table[p1] = true
+        p1 = p1.Next
+    }
+
+    for p2 != nil {
+        if table[p2]{
+            return p2
+        }
+        p2 = p2.Next
+    }
+
+    return nil
+}
+```
