@@ -284,3 +284,69 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
     return nil
 }
 ```
+
+
+
+## [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+
+- Time: ***O(n)***
+- Memory: ***O(n)***
+
+```golang
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+func hasCycle(head *ListNode) bool {
+    p := head
+    data := make(map[*ListNode]bool)
+
+    for p != nil {
+        if data[p] {
+            return true
+        } else {
+            data[p] = true
+            p = p.Next
+        }
+    }
+
+    return false    
+}
+```
+
+
+
+## [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii)
+
+- Time: ***O(n)***
+- Memory: ***O(n)***
+
+```golang
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
+func detectCycle(head *ListNode) *ListNode {
+    p := head
+    data := make(map[*ListNode]bool)
+
+    for p != nil {
+        if data[p] {
+            return p
+        } else {
+            data[p] = true
+            p = p.Next
+        }
+    }
+
+    return nil
+}
+```
