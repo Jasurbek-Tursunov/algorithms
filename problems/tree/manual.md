@@ -141,3 +141,67 @@ func levelOrder(root *TreeNode) [][]int {
     return result
 }
 ```
+
+
+
+## [101. Symmetric Tree](https://leetcode.com/problems/symmetric-tree/)
+
+- Time: ***O(n)***
+- Memory: ***O(h)***
+
+```golang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func equal(left, right *TreeNode) bool {
+    if left == nil || right == nil {
+        return left == nil && right == nil
+    }
+
+    if left.Val != right.Val {
+        return false
+    }
+
+    return equal(left.Left, right.Right) && equal(left.Right, right.Left)
+}
+
+func isSymmetric(root *TreeNode) bool {
+    return root == nil || equal(root.Left, root.Right)
+}
+```
+
+
+
+## [100. Same Tree](https://leetcode.com/problems/same-tree/)
+
+- Time: ***O(n)***
+- Memory: ***O(h)***
+
+```golang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func isSameTree(p *TreeNode, q *TreeNode) bool {
+    if p == nil || q == nil {
+        return p == nil && q == nil
+    }
+
+    if p.Val != q.Val {
+        return false
+    }
+
+    return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
+}
+```
