@@ -205,3 +205,38 @@ func isSameTree(p *TreeNode, q *TreeNode) bool {
     return isSameTree(p.Left, q.Left) && isSameTree(p.Right, q.Right)
 }
 ```
+
+
+
+## [112. Сумма путей](https://leetcode.com/problems/path-sum/)
+
+- Time: ***O(n)***
+- Memory: ***O(h)***
+
+```golang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func helper(node *TreeNode, sum, target int) bool {
+    if node == nil {
+        return false
+    }
+
+    sum += node.Val
+    if node.Left == nil && node.Right == nil && sum == target {
+        return true
+    }
+
+    return helper(node.Left, sum, target) || helper(node.Right, sum, target)
+}
+
+func hasPathSum(root *TreeNode, targetSum int) bool {
+    return helper(root, 0, targetSum)
+}
+```
