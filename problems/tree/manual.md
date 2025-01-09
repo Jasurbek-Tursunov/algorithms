@@ -70,6 +70,9 @@ func inorderTraversal(root *TreeNode) []int {
 
 ## [145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/)
 
+- Time: ***O(n)***
+- Memory: ***O(n)***
+
 ```golang
 /**
  * Definition for a binary tree node.
@@ -94,6 +97,46 @@ func postorderTraversal(root *TreeNode) []int {
     result := []int{}
 
     postorderAdder(root, &result)
+
+    return result
+}
+```
+
+
+
+## [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+
+- Time: ***O(n)***
+- Memory: ***O(n)***
+
+```golang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func preorderWithLevel(node *TreeNode, level int, arr*[][]int) {
+    if node == nil {
+        return
+    }
+
+    if level == len(*arr) {
+        *arr = append(*arr, []int{})
+    }
+
+    (*arr)[level] = append((*arr)[level], node.Val)
+    preorderWithLevel(node.Left, level + 1, arr)
+    preorderWithLevel(node.Right, level + 1, arr)
+}
+
+func levelOrder(root *TreeNode) [][]int {
+    result := [][]int{}
+
+    preorderWithLevel(root, 0, &result)
 
     return result
 }
