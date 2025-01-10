@@ -276,3 +276,49 @@ func minDepth(root *TreeNode) int {
     return 1 + y
 }
 ```
+
+
+
+## [107. Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/)
+
+- Time: ***O(n)***
+- Memory: ***O(n)***
+
+```golang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func levelOrderBottom(root *TreeNode) [][]int {
+    slice := [][]int{}
+
+    var f func(node *TreeNode, level int, arr *[][]int)
+
+    f = func(node *TreeNode, level int, arr *[][]int) {
+        if node == nil {
+            return
+        }
+
+        if level == len(*arr) {
+            *arr = append(*arr, []int{})
+        }
+
+        (*arr)[level] = append((*arr)[level], node.Val)
+        f(node.Left, level + 1, arr)
+        f(node.Right, level + 1, arr)
+    }
+
+    f(root, 0, &slice)
+
+    for i, j := 0, len(slice) -1; i < j; i, j = i+1, j-1 {
+        slice[i], slice[j] = slice[j], slice[i]
+    }
+
+    return slice
+}
+```
