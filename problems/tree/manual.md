@@ -208,7 +208,7 @@ func isSameTree(p *TreeNode, q *TreeNode) bool {
 
 
 
-## [112. Сумма путей](https://leetcode.com/problems/path-sum/)
+## [112. Path Sum](https://leetcode.com/problems/path-sum/)
 
 - Time: ***O(n)***
 - Memory: ***O(h)***
@@ -238,5 +238,41 @@ func helper(node *TreeNode, sum, target int) bool {
 
 func hasPathSum(root *TreeNode, targetSum int) bool {
     return helper(root, 0, targetSum)
+}
+```
+
+
+
+## [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
+
+```golang
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+func minDepth(root *TreeNode) int {
+    if root == nil {
+        return 0
+    }
+
+    x := minDepth(root.Left)
+    y := minDepth(root.Right)
+
+    if x == 0 || y == 0 {
+        if x == 0 {
+            return 1 + y
+        }
+        return 1 + x
+    }
+
+    if x < y {
+        return 1 + x
+    }
+    return 1 + y
 }
 ```
