@@ -36,3 +36,31 @@ SumRange
      * param_1 := obj.SumRange(left,right);
      */
 ```
+
+
+
+## [724. Find Pivot Index](https://leetcode.com/problems/find-pivot-index/description/)
+
+- Time: ***O(n)***
+- Memory: ***O(1)***
+
+```golang
+    func pivotIndex(nums []int) int {
+        sum := 0
+        
+        for _, v := range nums {
+            sum += v
+        }
+    
+        preSum := 0
+    
+        for i, v := range nums {
+            if sum - preSum - v == preSum {
+                return i
+            }
+            preSum += v
+        }
+    
+        return -1
+    }
+```
