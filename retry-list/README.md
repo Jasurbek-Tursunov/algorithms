@@ -162,3 +162,8 @@ func reorderList(head *ListNode) {
 ## [107. Binary Tree Level Order Traversal II](https://leetcode.com/problems/binary-tree-level-order-traversal-ii/)
 
 - Many error
+
+## [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
+
+- Timeout
+- Poorly mastered
