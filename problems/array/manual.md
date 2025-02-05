@@ -64,3 +64,24 @@ SumRange
         return -1
     }
 ```
+
+
+
+## [268. Missing Number](https://leetcode.com/problems/missing-number/)
+
+- Time: ***O(n)***
+- Memory: ***O(1)***
+
+```golang
+    func missingNumber(nums []int) int {
+        n := len(nums)
+        progress := (0 + n) * (n+1) / 2
+        sum := 0
+    
+        for _, v := range nums {
+            sum += v
+        }
+    
+        return progress - sum
+    }
+```
