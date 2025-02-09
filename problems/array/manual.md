@@ -110,3 +110,31 @@ SumRange
         reverse(nums, k, n - 1)
     }
 ```
+
+
+
+## []()
+
+- Time: ***O(n)***
+- Memory: ***O(1)***
+
+```golang
+    func findLengthOfLCIS(nums []int) int {
+        maxCount := 1
+        subCount := 1
+    
+        for i:= 0; i < len(nums) -1; i++ {
+            if nums[i] < nums[i+1] {
+                subCount++
+            } else {
+                subCount = 1
+            }
+    
+            if subCount > maxCount {
+                maxCount = subCount
+            }
+        }
+    
+        return maxCount
+    }
+```
