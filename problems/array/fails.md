@@ -4,3 +4,7 @@
 
 
 
+## [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+1. Не внимательность к позициям при объединении 
+

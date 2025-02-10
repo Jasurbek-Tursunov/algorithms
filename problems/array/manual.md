@@ -138,3 +138,38 @@ SumRange
         return maxCount
     }
 ```
+
+
+
+## [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+- Time: ***O(n log n)***
+- Memory: ***O(n)***
+
+```golang
+    func isIntersect(a, b []int) bool {
+        return max(a[0], b[0]) <= min(a[1], b[1])
+    }
+    
+    func merge(intervals [][]int) [][]int {
+        sort.Slice(intervals, func(i, j int) bool{
+            return intervals[i][0] < intervals[j][0]
+        })
+    
+        result := make([][]int, 0, len(intervals))
+        result = append(result, intervals[0])
+        lastIndex := 0
+    
+        for i := 0; i<len(intervals); i++ {
+            lastIndex = len(result) - 1
+            if isIntersect(result[lastIndex], intervals[i]) {
+                result[lastIndex][0] = min(result[lastIndex][0], intervals[i][0])
+                result[lastIndex][1] = max(result[lastIndex][1], intervals[i][1])
+            } else {
+                result = append(result, intervals[i])
+            }
+        }
+    
+        return result
+    }
+```
